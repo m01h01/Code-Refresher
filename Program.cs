@@ -11,7 +11,6 @@ namespace Code_Refresher
 {
     internal class Program
     {
-
         static void Main(string[] args)
         {
             List<Player> players = new List<Player>();
@@ -83,34 +82,38 @@ namespace Code_Refresher
             Console.Write($"Enter the letter: ");
             string enter = Console.ReadLine();
             int i;
-
-            for (i = 0; i < players.Count; i++)
+            bool isRunning = true;
+            while (isRunning)
             {
-                string playerName = players[i].Name[0].ToString();
-
-                if (enter == playerName)
+                for (i = 0; i < players.Count; i++)
                 {
-                    Console.WriteLine(players[i]);
-                }
+                    string playerName = players[i].Name[0].ToString();
 
-                else if (enter.ToLower() == playerName.ToLower())
-                {
-                    Console.WriteLine(players[i]);
+                    if (enter == playerName || enter.ToLower() == playerName.ToLower())
+                    {
+                        Console.WriteLine(players[i]);
+                       
+                    }
+                    else
+                    {
+                        isRunning = false;
+
+                    }
                 }
             }
 
             if (enter == enter.ToLower())
             {
-                Console.WriteLine($"No Player's Name start with {enter}");
+                Console.WriteLine($"No Player's Name starts with {enter}");
 
             }
-            else 
+            else
             {
-                Console.WriteLine($"No Player's Name start with {enter}");
+                Console.WriteLine($"No Player's Name starts with {enter}");
             }
+
         }
            
-
         public static void AddPlayer(List<Player> player)
         {
             Console.Write($"Enter Name: ");
