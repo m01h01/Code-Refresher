@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
+using System.Data;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -11,10 +12,12 @@ namespace Code_Refresher
 {
     internal class Program
     {
+        static List<Player> players = new List<Player>();
+        static string FirstLetter;
+
         static void Main(string[] args)
         {
-            List<Player> players = new List<Player>();
-
+            
             Player player1 = new Player("Billy", 12);
             Player player2 = new Player("Victor", 33);
             Player player3 = new Player("Sally", 67);
@@ -81,38 +84,29 @@ namespace Code_Refresher
         {
             Console.Write($"Enter the letter: ");
             string enter = Console.ReadLine();
+            string playerName;
             int i;
-            bool isRunning = true;
-            while (isRunning)
+
+            for (i = 0; i < players.Count; i++)
             {
-                for (i = 0; i < players.Count; i++)
+                playerName = players[i].Name[0].ToString();
+                if (enter == playerName || enter.ToLower() == playerName.ToLower())
                 {
-                    string playerName = players[i].Name[0].ToString();
+                    Console.WriteLine(players[i]);
+                }
 
-                    if (enter == playerName || enter.ToLower() == playerName.ToLower())
-                    {
-                        Console.WriteLine(players[i]);
-                       
-                    }
-                    else
-                    {
-                        isRunning = false;
-
-                    }
+                else
+                {
+                    playerName = FirstLetter;
                 }
             }
-
-            if (enter == enter.ToLower())
+            if (enter == FirstLetter)
             {
                 Console.WriteLine($"No Player's Name starts with {enter}");
 
             }
-            else
-            {
-                Console.WriteLine($"No Player's Name starts with {enter}");
-            }
-
         }
+        
            
         public static void AddPlayer(List<Player> player)
         {
