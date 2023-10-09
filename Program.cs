@@ -84,30 +84,31 @@ namespace Code_Refresher
         {
             Console.Write($"Enter the letter: ");
             string enter = Console.ReadLine();
-            string playerName;
             int i;
 
             for (i = 0; i < players.Count; i++)
             {
-                playerName = players[i].Name[0].ToString();
-                if (enter == playerName || enter.ToLower() == playerName.ToLower())
+                string playerName = players[i].Name[0].ToString();
+                if (enter == playerName || enter == playerName.ToLower())
                 {
                     Console.WriteLine(players[i]);
-                }
 
+                }
                 else
                 {
                     playerName = FirstLetter;
+
                 }
-            }
-            if (enter == FirstLetter)
-            {
-                Console.WriteLine($"No Player's Name starts with {enter}");
 
             }
+            
+            if(FirstLetter == enter) 
+            { 
+                Console.WriteLine($"No Player's Name starts with {enter}"); 
+            }  
+
         }
-        
-           
+         
         public static void AddPlayer(List<Player> player)
         {
             Console.Write($"Enter Name: ");
